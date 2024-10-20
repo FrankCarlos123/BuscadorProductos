@@ -7,6 +7,7 @@
     --image-size: 180px; /* Ajustado a px para imágenes más pequeñas */
 }
 
+/* Estilos generales para dispositivos grandes */
 .app-container {
     display: grid;
     grid-template-columns: 1fr 1fr; /* Divide la pantalla en dos mitades iguales */
@@ -45,7 +46,7 @@
 .product-card {
     border: 1px solid #ddd;
     padding: 5px;
-    width: var(--image-size); /* Ahora en px */
+    width: var(--image-size);
     height: auto; /* Ajuste automático para el contenido */
     display: flex;
     flex-direction: column;
@@ -134,6 +135,37 @@ img {
     object-fit: contain;
 }
 
+/* Estilos específicos para pantallas más pequeñas (móviles) */
+@media screen and (max-width: 768px) {
+    .app-container {
+        grid-template-columns: 1fr; /* Pasa a una sola columna en pantallas pequeñas */
+        gap: 10px;
+        padding: 10px;
+    }
+
+    .results-grid {
+        grid-template-columns: repeat(2, 1fr); /* 2 imágenes por fila en móviles */
+        gap: 10px;
+    }
+
+    .product-card {
+        width: 140px; /* Tamaño más pequeño para móviles */
+    }
+
+    .labels-container {
+        width: 100%; /* Ajuste al ancho completo en móviles */
+    }
+
+    .label-row {
+        grid-template-columns: 1fr 2fr 1fr; /* Adaptación de las celdas para móviles */
+    }
+
+    .name-cell {
+        padding: 0 3px; /* Espaciado reducido */
+    }
+}
+
+/* Estilos para impresión */
 @media print {
     .app-container {
         padding: 0;
@@ -149,4 +181,3 @@ img {
         justify-content: center;
     }
 }
-
