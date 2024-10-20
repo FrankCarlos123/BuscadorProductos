@@ -4,7 +4,7 @@
     --border-color: #000;
     --cell-size: 25mm;
     --double-cell: 50mm;
-    --image-size: 50mm; /* 5cm en mm */
+    --image-size: 45mm; /* Ajustado para que las imágenes en el buscador sean más pequeñas */
 }
 
 .app-container {
@@ -36,8 +36,8 @@
 
 .results-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr); /* 4 imágenes por fila */
-    gap: 20px;
+    grid-template-columns: repeat(5, 1fr); /* 5 imágenes por fila */
+    gap: 15px; /* Ajustado el espacio entre los cuadros */
     justify-items: center; /* Centramos las imágenes */
 }
 
@@ -45,7 +45,7 @@
     border: 1px solid #ddd;
     padding: 5px;
     width: var(--image-size);
-    height: var(--image-size); /* 5cm */
+    height: calc(var(--image-size) + 20px); /* Ajustamos la altura para el texto */
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -54,15 +54,16 @@
 
 .product-card img {
     width: 100%;
-    height: 100%;
+    height: 80%; /* Aseguramos que la imagen solo ocupe el 80% del cuadro */
     object-fit: contain;
 }
 
 .product-card h3 {
-    font-size: 12px;
-    margin: 5px 0;
+    font-size: 10px; /* Reducimos un poco el tamaño del texto */
+    margin: 3px 0;
     text-align: center;
     line-height: 1.2;
+    word-wrap: break-word; /* Para que el texto se ajuste al ancho del cuadro */
 }
 
 /* Panel derecho - mitad derecha */
@@ -98,7 +99,7 @@
     grid-template-columns: var(--cell-size) var(--double-cell) var(--cell-size);
     height: var(--cell-size);
     border: 1px solid var(--border-color);
-    margin-bottom: 5px; /* Añadido margen para evitar que se junten las etiquetas */
+    margin-bottom: 5px;
 }
 
 .product-cell, .name-cell, .qr-cell {
