@@ -1,87 +1,152 @@
-/* Estilos base */
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+:root {
+    --primary-color: #2871b5;
+    --background-color: #f5f5f5;
+    --border-color: #000;
+    --cell-size: 100px; /* Cambiado a px */
+    --double-cell: 200px; /* Cambiado a px */
+    --image-size: 180px; /* Ajustado a px para imágenes más pequeñas */
 }
 
 .app-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Divide la pantalla en dos mitades iguales */
+    gap: 20px;
+    max-width: 1200px; /* Limita el ancho total a un valor adecuado */
+    width: 100%;
     padding: 20px;
+    font-size: 14px;
 }
 
-.search-panel, .labels-panel {
-    margin: 10px;
-    padding: 20px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-}
-
+/* Panel de búsqueda - mitad izquierda */
 .search-panel {
     width: 100%;
-    max-width: 500px;
-}
-
-.search-box {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 10px;
+    padding-right: 20px;
 }
 
 .search-box input {
-    width: 80%;
-    padding: 10px;
-    font-size: 16px;
+    width: 100%;
+    height: 30px;
+    font-size: 14px;
+    padding: 5px;
 }
 
 .search-box button {
-    padding: 10px;
-    font-size: 16px;
-    cursor: pointer;
-}
-
-.codes-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-    gap: 10px;
-    margin-top: 10px;
-}
-
-.code-input {
-    padding: 10px;
-    font-size: 16px;
-    text-align: center;
-}
-
-.print-button {
-    margin-top: 20px;
-    padding: 10px 20px;
-    font-size: 16px;
-    cursor: pointer;
-}
-
-.labels-panel {
-    width: 100%;
-    max-width: 700px;
+    height: 30px;
+    padding: 0 15px;
 }
 
 .results-grid {
-    margin-top: 20px;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr); /* 5 imágenes por fila */
+    gap: 15px;
+    justify-items: center;
 }
 
-/* Media Queries para diseño responsivo */
-@media (max-width: 768px) {
-    .app-container {
-        flex-direction: column;
-    }
+.product-card {
+    border: 1px solid #ddd;
+    padding: 5px;
+    width: var(--image-size); /* Ahora en px */
+    height: auto; /* Ajuste automático para el contenido */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
 
-    .search-panel, .labels-panel {
-        width: 100%;
+.product-card img {
+    width: 100%;
+    height: auto; /* Mantén la proporción de la imagen */
+    object-fit: contain;
+}
+
+.product-card h3 {
+    font-size: 10px;
+    margin: 3px 0;
+    text-align: center;
+    line-height: 1.2;
+    word-wrap: break-word;
+}
+
+/* Panel derecho - mitad derecha */
+.labels-panel {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* Códigos QR */
+.codes-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    width: 100%; /* Ahora usa el 100% del contenedor */
+}
+
+.code-input {
+    width: 100%;
+    height: 25px;
+    font-size: 12px;
+    padding: 2px 5px;
+}
+
+/* Contenedor de etiquetas */
+.labels-container {
+    width: calc(var(--cell-size) * 4); /* Ahora en px */
+}
+
+.label-row {
+    display: grid;
+    grid-template-columns: var(--cell-size) var(--double-cell) var(--cell-size);
+    height: var(--cell-size);
+    border: 1px solid var(--border-color);
+    margin-bottom: 5px;
+}
+
+.product-cell, .name-cell, .qr-cell {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.product-cell, .qr-cell {
+    width: var(--cell-size);
+    height: var(--cell-size);
+}
+
+.name-cell {
+    width: var(--double-cell);
+    padding: 0 5px;
+    border-left: 1px solid var(--border-color);
+    border-right: 1px solid var(--border-color);
+}
+
+.name-cell input {
+    width: 100%;
+    height: 20px;
+    font-size: 12px;
+}
+
+img {
+    max-width: 90%;
+    max-height: 90%;
+    object-fit: contain;
+}
+
+@media print {
+    .app-container {
+        padding: 0;
         max-width: 100%;
+    }
+    
+    .search-panel, .codes-input {
+        display: none;
+    }
+    
+    .labels-panel {
+        width: 100%;
+        justify-content: center;
     }
 }
 
