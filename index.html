@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buscador de Códigos</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="app-container">
+        <div class="search-panel">
+            <h1>Buscador de Productos</h1>
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="Buscar producto...">
+                <button id="searchButton">Buscar</button>
+            </div>
+            <div id="results" class="results-grid"></div>
+        </div>
+        
+        <div class="labels-panel">
+            <div class="codes-input">
+                <h3>Códigos para QR</h3>
+                <div class="codes-grid">
+                    <input type="text" class="code-input" value="08554411">
+                    <input type="text" class="code-input" value="08554411">
+                    <input type="text" class="code-input" value="08554411">
+                    <input type="text" class="code-input" value="08554411">
+                    <input type="text" class="code-input" value="08554411">
+                    <input type="text" class="code-input" value="08554411">
+                    <input type="text" class="code-input" value="08554411">
+                    <input type="text" class="code-input" value="08554411">
+                    <input type="text" class="code-input" value="08554411">
+                    <input type="text" class="code-input" value="08554411">
+                </div>
+            </div>
+
+            <div id="labelsContainer" class="labels-container">
+                <!-- Las etiquetas se generarán dinámicamente -->
+            </div>
+
+            <button id="printButton" class="print-button">Imprimir</button>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/qrcode-generator/qrcode.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
