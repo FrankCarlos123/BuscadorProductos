@@ -1,183 +1,51 @@
-:root {
-    --primary-color: #2871b5;
-    --background-color: #f5f5f5;
-    --border-color: #000;
-    --cell-size: 100px; /* Cambiado a px */
-    --double-cell: 200px; /* Cambiado a px */
-    --image-size: 180px; /* Ajustado a px para imágenes más pequeñas */
-}
-
-/* Estilos generales para dispositivos grandes */
-.app-container {
-    display: grid;
-    grid-template-columns: 1fr 1fr; /* Divide la pantalla en dos mitades iguales */
-    gap: 20px;
-    max-width: 1200px; /* Limita el ancho total a un valor adecuado */
-    width: 100%;
-    padding: 20px;
-    font-size: 14px;
-}
-
-/* Panel de búsqueda - mitad izquierda */
-.search-panel {
-    width: 100%;
-    padding-right: 20px;
-}
-
-.search-box input {
-    width: 100%;
-    height: 30px;
-    font-size: 14px;
-    padding: 5px;
-}
-
-.search-box button {
-    height: 30px;
-    padding: 0 15px;
-}
-
-.results-grid {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr); /* 5 imágenes por fila */
-    gap: 15px;
-    justify-items: center;
-}
-
 .product-card {
+    width: 94.5px; /* 25mm */
+    height: 94.5px; /* 25mm */
     border: 1px solid #ddd;
-    padding: 5px;
-    width: var(--image-size);
-    height: auto; /* Ajuste automático para el contenido */
+    padding: 4px;
+    cursor: pointer;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    background: white;
 }
 
 .product-card img {
-    width: 100%;
-    height: auto; /* Mantén la proporción de la imagen */
+    width: 86.5px; /* 25mm - padding - border */
+    height: 86.5px;
     object-fit: contain;
-}
-
-.product-card h3 {
-    font-size: 10px;
-    margin: 3px 0;
-    text-align: center;
-    line-height: 1.2;
-    word-wrap: break-word;
-}
-
-/* Panel derecho - mitad derecha */
-.labels-panel {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-/* Códigos QR */
-.codes-grid {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-    width: 100%; /* Ahora usa el 100% del contenedor */
-}
-
-.code-input {
-    width: 100%;
-    height: 25px;
-    font-size: 12px;
-    padding: 2px 5px;
-}
-
-/* Contenedor de etiquetas */
-.labels-container {
-    width: calc(var(--cell-size) * 4); /* Ahora en px */
+    border: 1px solid #eee;
+    padding: 2px;
 }
 
 .label-row {
     display: grid;
-    grid-template-columns: var(--cell-size) var(--double-cell) var(--cell-size);
-    height: var(--cell-size);
+    grid-template-columns: 94.5px 189px 94.5px; /* 25mm, 50mm, 25mm */
+    height: 94.5px;
     border: 1px solid var(--border-color);
-    margin-bottom: 5px;
-}
-
-.product-cell, .name-cell, .qr-cell {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
+    background: white;
 }
 
 .product-cell, .qr-cell {
-    width: var(--cell-size);
-    height: var(--cell-size);
+    width: 94.5px;
+    height: 94.5px;
+    padding: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.name-cell {
-    width: var(--double-cell);
-    padding: 0 5px;
-    border-left: 1px solid var(--border-color);
-    border-right: 1px solid var(--border-color);
-}
-
-.name-cell input {
-    width: 100%;
-    height: 20px;
-    font-size: 12px;
-}
-
-img {
-    max-width: 90%;
-    max-height: 90%;
+.product-cell img, .qr-cell img {
+    max-width: 86.5px;
+    max-height: 86.5px;
     object-fit: contain;
+    border: 1px solid #eee;
+    padding: 2px;
+    background: white;
 }
 
-/* Estilos específicos para pantallas más pequeñas (móviles) */
-@media screen and (max-width: 768px) {
-    .app-container {
-        grid-template-columns: 1fr; /* Pasa a una sola columna en pantallas pequeñas */
-        gap: 10px;
-        padding: 10px;
-    }
-
-    .results-grid {
-        grid-template-columns: repeat(2, 1fr); /* 2 imágenes por fila en móviles */
-        gap: 10px;
-    }
-
-    .product-card {
-        width: 140px; /* Tamaño más pequeño para móviles */
-    }
-
-    .labels-container {
-        width: 100%; /* Ajuste al ancho completo en móviles */
-    }
-
-    .label-row {
-        grid-template-columns: 1fr 2fr 1fr; /* Adaptación de las celdas para móviles */
-    }
-
-    .name-cell {
-        padding: 0 3px; /* Espaciado reducido */
-    }
-}
-
-/* Estilos para impresión */
-@media print {
-    .app-container {
-        padding: 0;
-        max-width: 100%;
-    }
-    
-    .search-panel, .codes-input {
-        display: none;
-    }
-    
-    .labels-panel {
-        width: 100%;
-        justify-content: center;
-    }
+.results-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 94.5px);
+    gap: 10px;
+    padding: 10px;
 }
