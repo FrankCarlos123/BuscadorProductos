@@ -1,51 +1,80 @@
-.product-card {
-    width: 94.5px; /* 25mm */
-    height: 94.5px; /* 25mm */
-    border: 1px solid #ddd;
-    padding: 4px;
-    cursor: pointer;
+/* Estilos generales */
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+.app-container {
     display: flex;
-    flex-direction: column;
-    background: white;
+    justify-content: space-between;
+    padding: 20px;
 }
 
-.product-card img {
-    width: 86.5px; /* 25mm - padding - border */
-    height: 86.5px;
-    object-fit: contain;
-    border: 1px solid #eee;
-    padding: 2px;
+/* Estilos para el panel de búsqueda */
+.search-panel {
+    width: 60%;
 }
 
-.label-row {
-    display: grid;
-    grid-template-columns: 94.5px 189px 94.5px; /* 25mm, 50mm, 25mm */
-    height: 94.5px;
-    border: 1px solid var(--border-color);
-    background: white;
-}
-
-.product-cell, .qr-cell {
-    width: 94.5px;
-    height: 94.5px;
-    padding: 4px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.product-cell img, .qr-cell img {
-    max-width: 86.5px;
-    max-height: 86.5px;
-    object-fit: contain;
-    border: 1px solid #eee;
-    padding: 2px;
-    background: white;
-}
-
+/* Estilos para la cuadrícula de resultados */
 .results-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, 94.5px);
+    grid-template-columns: repeat(auto-fill, minmax(25mm, 1fr));
     gap: 10px;
-    padding: 10px;
+}
+
+/* Estilos para cada resultado (contenedor de imagen) */
+.result-item {
+    width: 25mm;
+    height: 25mm;
+    border: 1px solid #ccc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+/* Estilos para las imágenes dentro de los resultados */
+.result-item img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+/* Estilos para el panel de etiquetas */
+.labels-panel {
+    width: 35%;
+}
+
+/* Estilos para la cuadrícula de códigos */
+.codes-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+}
+
+/* Estilos para el contenedor de etiquetas */
+.labels-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(25mm, 1fr));
+    gap: 10px;
+    margin-top: 20px;
+}
+
+/* Estilos para cada etiqueta (contenedor de QR) */
+.label {
+    width: 25mm;
+    height: 25mm;
+    border: 1px solid #ccc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+/* Estilos para los códigos QR dentro de las etiquetas */
+.label img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
 }
