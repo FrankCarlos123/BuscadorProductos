@@ -1,51 +1,92 @@
+:root {
+    --border-color: #ddd;
+}
+
 .product-card {
-    width: 94.5px; /* 25mm */
-    height: 94.5px; /* 25mm */
-    border: 1px solid #ddd;
-    padding: 4px;
+    width: 25mm;
+    height: 25mm;
+    border: 1px solid var(--border-color);
+    padding: 1mm;
     cursor: pointer;
     display: flex;
     flex-direction: column;
     background: white;
+    box-sizing: border-box;
 }
 
 .product-card img {
-    width: 86.5px; /* 25mm - padding - border */
-    height: 86.5px;
+    width: 23mm; /* 25mm - 2mm (padding) */
+    height: 23mm;
     object-fit: contain;
     border: 1px solid #eee;
-    padding: 2px;
+    padding: 0.5mm;
+    box-sizing: border-box;
 }
 
 .label-row {
     display: grid;
-    grid-template-columns: 94.5px 189px 94.5px; /* 25mm, 50mm, 25mm */
-    height: 94.5px;
+    grid-template-columns: 25mm 50mm 25mm;
+    height: 25mm;
     border: 1px solid var(--border-color);
     background: white;
 }
 
 .product-cell, .qr-cell {
-    width: 94.5px;
-    height: 94.5px;
-    padding: 4px;
+    width: 25mm;
+    height: 25mm;
+    padding: 1mm;
     display: flex;
     align-items: center;
     justify-content: center;
+    box-sizing: border-box;
 }
 
 .product-cell img, .qr-cell img {
-    max-width: 86.5px;
-    max-height: 86.5px;
+    max-width: 23mm;
+    max-height: 23mm;
     object-fit: contain;
     border: 1px solid #eee;
-    padding: 2px;
+    padding: 0.5mm;
     background: white;
+    box-sizing: border-box;
 }
 
 .results-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, 94.5px);
-    gap: 10px;
-    padding: 10px;
+    grid-template-columns: repeat(auto-fill, 25mm);
+    gap: 2mm;
+    padding: 2mm;
+}
+
+@media screen {
+    /* Estilos para pantalla */
+    html {
+        font-size: 16px;
+    }
+    
+    .product-card, .product-cell, .qr-cell {
+        width: 94.5px;
+        height: 94.5px;
+    }
+    
+    .product-card img, .product-cell img, .qr-cell img {
+        width: 86.5px;
+        height: 86.5px;
+    }
+    
+    .label-row {
+        grid-template-columns: 94.5px 189px 94.5px;
+        height: 94.5px;
+    }
+    
+    .results-grid {
+        grid-template-columns: repeat(auto-fill, 94.5px);
+    }
+}
+
+@media print {
+    /* Estilos para impresión */
+    html {
+        font-size: 12pt;
+    }
 }
