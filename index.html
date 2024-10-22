@@ -3,45 +3,62 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Buscador de Códigos</title>
+    <title>Buscador de Productos</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="app-container">
+    <div class="main-container">
+        <!-- Panel izquierdo: Buscador y resultados -->
         <div class="search-panel">
-            <h1>Buscador de Productos</h1>
-            <div class="search-box">
-                <input type="text" id="searchInput" placeholder="Buscar producto...">
-                <button id="searchButton">Buscar</button>
+            <div class="search-bar">
+                <form id="searchForm">
+                    <input type="text" id="searchInput" placeholder="Buscar un producto por nombre o marca">
+                    <button type="submit" id="searchButton">Buscar</button>
+                </form>
             </div>
-            <div id="results" class="results-grid"></div>
+            <div id="searchResults" class="search-results">
+                <ul class="products-list">
+                    <!-- Los resultados de búsqueda se insertarán aquí -->
+                </ul>
+            </div>
         </div>
-        
-        <div class="labels-panel">
-            <div class="codes-input">
-                <h3>Códigos para QR</h3>
-                <div class="codes-grid">
-                    <input type="text" class="code-input" value="">
-                    <input type="text" class="code-input" value="">
-                    <input type="text" class="code-input" value="">
-                    <input type="text" class="code-input" value="">
-                    <input type="text" class="code-input" value="">
-                    <input type="text" class="code-input" value="">
-                    <input type="text" class="code-input" value="">
-                    <input type="text" class="code-input" value="">
-                    <input type="text" class="code-input" value="">
-                    <input type="text" class="code-input" value="">
-                </div>
-            </div>
 
-            <div id="labelsContainer" class="labels-container">
-                <!-- Las etiquetas se generarán dinámicamente -->
+        <!-- Panel derecho: Códigos QR y etiquetas -->
+        <div class="labels-panel">
+            <div class="qr-header">
+                <div class="header-cell">Códigos QR</div>
+                <div class="header-cell">Imagen</div>
+                <div class="header-cell">Producto</div>
+                <div class="header-cell">QR</div>
+            </div>
+            
+            <!-- Contenedor para las 10 filas de etiquetas -->
+            <div class="labels-rows">
+                <!-- Se repetirá 10 veces -->
+                <div class="label-group">
+                    <div class="qr-input">
+                        <span class="number">01</span>
+                        <input type="text" value="08480000468147">
+                    </div>
+                    <div class="label-row">
+                        <div class="product-cell">
+                            <img src="" alt="Producto">
+                        </div>
+                        <div class="name-cell">
+                            <span>Nombre del producto</span>
+                        </div>
+                        <div class="qr-cell">
+                            <img src="" alt="QR Code">
+                        </div>
+                    </div>
+                </div>
+                <!-- Se repetirá hasta completar las 10 filas -->
             </div>
 
             <button id="printButton" class="print-button">Imprimir</button>
         </div>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/qrcode-generator/qrcode.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
