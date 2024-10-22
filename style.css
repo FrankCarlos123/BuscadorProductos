@@ -1,128 +1,194 @@
-body {
-    font-family: Arial, sans-serif;
+* {
+    box-sizing: border-box;
     margin: 0;
-    padding: 20px;
-    min-width: 1024px; /* Ancho mínimo para asegurar visualización correcta en PC */
+    padding: 0;
 }
 
-/* Estilos para el buscador */
-.search-container {
+body {
+    font-family: Arial, sans-serif;
+    background-color: #333;
+    color: white;
+    min-width: 1200px;
+}
+
+.main-container {
+    display: flex;
+    padding: 20px;
+    gap: 20px;
+}
+
+/* Panel de búsqueda */
+.search-panel {
+    flex: 1;
+    min-width: 0;
+}
+
+.search-bar {
     margin-bottom: 20px;
+    padding: 20px;
+    background: white;
+    border-radius: 4px;
+}
+
+.search-bar form {
+    display: flex;
+    gap: 10px;
 }
 
 #searchInput {
-    width: 300px;
-    padding: 5px;
-    font-size: 14px;
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
 }
 
 #searchButton {
-    padding: 5px 10px;
-    font-size: 14px;
+    padding: 10px 20px;
+    background-color: #0066cc;
+    color: white;
+    border: none;
+    border-radius: 4px;
     cursor: pointer;
+    font-size: 16px;
 }
 
-/* Estilos para la cuadrícula de resultados */
-.results-grid {
+/* Lista de productos */
+.products-list {
+    list-style: none;
     display: grid;
-    grid-template-columns: repeat(auto-fill, 94px); /* ~25mm */
-    gap: 10px;
-    margin-bottom: 20px;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
 }
 
-.product-card {
-    width: 94px;
-    height: 120px; /* Altura aumentada para acomodar la imagen y el texto */
-    border: 1px solid #ddd;
-    padding: 5px;
-    text-align: center;
+.product-item {
+    background: white;
+    border-radius: 4px;
+    padding: 10px;
     cursor: pointer;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
 }
 
-.product-card img {
-    width: 84px; /* 94px - 10px (padding) */
-    height: 84px;
-    object-fit: contain;
+.product-link {
+    text-decoration: none;
+    color: inherit;
 }
 
-.product-card h3 {
-    margin: 5px 0 0;
-    font-size: 12px;
-    width: 100%;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-}
-
-/* Estilos para las etiquetas */
-.labels-container {
-    width: 100%;
-}
-
-.label-row {
-    display: flex;
-    margin-bottom: 10px;
-    border: 1px solid #ddd;
-    height: 94px; /* 25mm */
-}
-
-.product-cell, .qr-cell {
-    width: 94px; /* 25mm */
-    height: 94px;
-    border-right: 1px solid #ddd;
+.product-image-container {
+    height: 200px;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
+.product-image {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+/* Panel de etiquetas */
+.labels-panel {
+    width: 400px;
+    background: #444;
+    padding: 20px;
+    border-radius: 5px;
+    flex-shrink: 0;
+}
+
+.qr-header {
+    display: grid;
+    grid-template-columns: auto 25mm 50mm 25mm;
+    gap: 10px;
+    color: #999;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.label-group {
+    margin-bottom: 15px;
+}
+
+.qr-input {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+    gap: 10px;
+}
+
+.qr-input .number {
+    width: 30px;
+    color: #999;
+}
+
+.qr-input input {
+    flex: 1;
+    padding: 8px;
+    background: #333;
+    border: 1px solid #555;
+    color: white;
+    border-radius: 3px;
+}
+
+.label-row {
+    display: grid;
+    grid-template-columns: 25mm 50mm 25mm;
+    height: 25mm;
+    background: white;
+}
+
+.product-cell, .qr-cell {
+    width: 25mm;
+    height: 25mm;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #ddd;
+    background: white;
+}
+
 .product-cell img, .qr-cell img {
-    max-width: 90px;
-    max-height: 90px;
+    max-width: 23mm;
+    max-height: 23mm;
     object-fit: contain;
 }
 
 .name-cell {
-    width: 188px; /* 50mm */
-    height: 94px;
-    border-right: 1px solid #ddd;
+    width: 50mm;
+    height: 25mm;
     padding: 5px;
     display: flex;
     align-items: center;
+    justify-content: center;
+    border: 1px solid #ddd;
+    background: white;
+    color: black;
+    text-align: center;
 }
 
-.name-cell input {
+.print-button {
     width: 100%;
+    padding: 12px;
+    background: #FFD700;
     border: none;
-    font-size: 14px;
-}
-
-/* Estilos para los códigos QR */
-.codes-input {
-    margin-bottom: 20px;
-}
-
-.codes-grid {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 10px;
-}
-
-.code-input {
-    width: 100%;
-    padding: 5px;
-    font-size: 14px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    margin-top: 20px;
 }
 
 /* Estilos para impresión */
 @media print {
-    body {
+    .search-panel {
+        display: none;
+    }
+
+    .labels-panel {
+        width: 100%;
+        background: none;
         padding: 0;
     }
 
-    .search-container, .results-grid, .codes-input, #printButton {
+    .qr-input, .print-button {
         display: none;
     }
 
